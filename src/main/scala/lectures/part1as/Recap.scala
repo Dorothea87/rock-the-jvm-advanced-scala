@@ -53,6 +53,7 @@ object Recap extends App {
 
   //generics
   abstract class MyList[+A] //variance and variance problems in THIS course
+
   //singletons and companions
   object MyList
 
@@ -62,42 +63,41 @@ object Recap extends App {
   //exceptions and try/catch/finally
   val throwsException = throw new RuntimeException() //type is nothing, can't be instantiated
   val aPotentialFailure = try {
-    throw new RuntimeException {
-    } catch {
-      case e: Exception => "I caught an exception"
-    } finally {
-      println("some logs")
-    }
+    throw new RuntimeException
+  } catch {
+    case e: Exception => "I caught an exception"
+  } finally {
+    println("some logs")
   }
 
   //packaging and imports
-  
+
   //functional programming
   val incrementer = new Function[Int, Int] {
     override def apply(v1: Int): Int = v1 + 1
   }
   incrementer(1)
-  
+
   val anonymousIncrementer = (x: Int) => x + 1
-  List(1, 2, 3).map(anonymousIncrementer)  //higher order functions
-  
+  List(1, 2, 3).map(anonymousIncrementer) //higher order functions
+
   //map, flatMap, filter
-  
+
   //for-comprehension
   val pairs = for {
     num <- List(1, 2, 3) //if condition
     char <- List('a', 'b', 'c')
   } yield num + "-" + char
-  
+
   //Scala collections: Seq, Array, Vectors, Maps, Tuples
   val aMap = Map(
     "Daniel" -> 789,
     "Jess" -> 555
   )
-  
+
   //"collections": Option, Try
   val anOption = Some(2)
-  
+
   //pattern matching
   val x = 2
   val order = x match {
@@ -106,7 +106,7 @@ object Recap extends App {
     case 3 => "third"
     case _ => x + "th"
   }
-  
+
   val bob = Person("bob", 22)
   val greeting = bob match {
     case Person(n, _) => s"Hi, my name is $n"
