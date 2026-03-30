@@ -68,7 +68,7 @@ object PartialFunctions extends App {
     case "rainy" => "That's a shame"
     case "sunny" => "How nice, now log off and enjoy the good weather"
   }
-  scala.io.Source.stdin.getLines().foreach { line =>
+  scala.io.Source.stdin.getLines().takeWhile(_ != "quit").foreach { line =>
     if(aConversation.isDefinedAt(line))
       println(aConversation(line))
 
